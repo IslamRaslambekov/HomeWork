@@ -19,5 +19,8 @@ class Fool:
     def get_cards(self):
         # Получить дополнительную карту
         pass
-
+    
+    def take_card(self);
+        # Брать карту если нечем отбивать
+        pass
 if __name__ == '__main__':
