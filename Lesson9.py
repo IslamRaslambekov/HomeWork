@@ -20,7 +20,4 @@ class Fool:
         # Получить дополнительную карту
         pass
 
-
 if __name__ == '__main__':
-    new_party = Fool()
-    print(new_party.suit_hearts)
