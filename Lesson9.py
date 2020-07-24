@@ -71,7 +71,7 @@ class Fool:
         check_var = str(check_var)
 
         check_var = self.cut_str(check_var)
-        print(f'{check_var}')
+        print(check_var)
 
         for i in range(len(self.__computer_deck)):
             temp_str = []
@@ -80,11 +80,11 @@ class Fool:
             temp_str = self.cut_str(temp_str)
             if check_var[0:1] == temp_str[0:1]:
                 if self.__computer_deck[i][1] > self.__player_deck[player_choice][1]:
-                    print(f'{self.__computer_deck[i][0]}', 'Компьютер отбил карту', sep='\n')
+                    print(f'{self.__computer_deck[i][0]}\nКомпьютер отбил карту')
                     self.__player_deck.pop(player_choice)
                     self.__computer_deck.pop(i)
-                    self.__add_cards(self.__computer_deck)
-                    self.__add_cards(self.__player_deck)
+                    self.__player_deck = self.__add_cards(self.__player_deck)
+                    self.__computer_deck = self.__add_cards(self.__computer_deck)
                     break
             if i == len(self.__computer_deck) - 1:
                 print('Компьютер берет карту')
