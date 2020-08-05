@@ -22,6 +22,9 @@ class Point:
     def __add__(self, other):
         return Point(self.x + other.x, self.y + other.y)
 
+    def __mul__(self, other):
+        return Point(self.x * other.x, self.y * other.y)
+
 
 if __name__ == "__main__":
     pnt1 = Point(1, 10)
@@ -29,3 +32,4 @@ if __name__ == "__main__":
     print(pnt1 == pnt2)
     print(pnt1 != pnt2)
     print(pnt1 + pnt2)
+    print(pnt1 * pnt2)
