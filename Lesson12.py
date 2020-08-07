@@ -1,43 +1,56 @@
 import requests
 from pprint import pprint
 
-URL = 'https://api.hh.ru/vacancies'
-params = {'text': 'Python AND Москва',
-          'only_with_salary': True,
-          'per_page': 100,
-          'page': 1}
+URL = 'https://www.cbr-xml-daily.ru/daily_json.js'
 
-response = requests.get(URL, params=params).json()
+response = requests.get(URL).json()  # Берутся данные о курсах валют с ЦБ РФ https://www.cbr-xml-daily.ru/
+
+usd_rate = response['Valute']['USD']['Value']
+euro_rate = response['Valute']['EUR']['Value']
+
+URL = 'https://api.hh.ru/vacancies'  # Перезапись URL
+
 min_salary = list()
 max_salary = list()
 
+# Делается запрос чтобы узнать количество страниц
+response = requests.get(URL, params={'text': 'Python AND Москва', 'only_with_salary': True, 'per_page': 100}).json()
+pages = response['pages']
+
 print(f"\nНайдено вакансий по запросу Python в Москве - {response['found']}\n")
-RUR_count = 0
-USD_count = 0
-EUR_count = 0
-for i in response['items']:
-    if (i['salary']['from'] is not None) and (i['salary']['to'] is not None):
 
-        if i['salary']['currency'] == 'RUR':
-            min_salary.append(i['salary']['from'])
-            max_salary.append(i['salary']['to'])
-            RUR_count += 1
+for page in range(1, pages):  # Данные с последней страницы не будут браться
+    params = {'text': 'Python AND Москва',
+              'only_with_salary': True,
+              'per_page': 100,
+              'page': page}  # Страница будет меняться от 1 до 7 (не включая 7 страницу)
 
-        elif i['salary']['currency'] == 'USD':
-            min_salary.append((i['salary']['from']) * 73.59)
-            max_salary.append((i['salary']['to']) * 73.59)
-            USD_count += 1
+    response = requests.get(URL, params=params).json()  # На каждую страницу идет запрос
 
-        elif i['salary']['currency'] == 'EUR':
-            min_salary.append((i['salary']['from']) * 87.05)
-            max_salary.append((i['salary']['to']) * 87.05)
-            EUR_count += 1
+    for item in response['items']:
+        salfrom = item['salary']['from']  # Зарплата от... (пример: от 100 000)
+        salto = item['salary']['to']  # Зарплата до... (пример: до 150 000)
+        salcurr = item['salary']['currency']  # Валюта (RUR, USD, EUR)
 
-print(f'Количесвто вакансий с указанной з/п: \
-\nв рублях - {RUR_count} \
-\nв долларах - {USD_count} \
-\nв евро - {EUR_count}\n')
+        if salcurr == 'RUR':
+            if salfrom is not None:
+                min_salary.append(salfrom)
+            if salto is not None:
+                max_salary.append(salto)
 
-print(f'Средняя з/п Python-разработчика в Москве \
+        elif salcurr == 'USD':
+            if salfrom is not None:
+                min_salary.append(int(salfrom * usd_rate))   # Перевод доллара в рубль
+            if salto is not None:
+                max_salary.append(int(salto * usd_rate))
+
+        elif salcurr == 'EUR':
+            if salfrom is not None:
+                min_salary.append(int(salfrom * euro_rate))   # Перевод евро в рубль
+            if salto is not None:
+                max_salary.append(int(salto * euro_rate))
+
+
+print(f'Средняя з/п разработчиков по запросу Python в Москве \
 от {sum(min_salary) // len(min_salary)} \
 до {sum(max_salary) // len(max_salary)} RUR')
