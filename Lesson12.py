@@ -19,11 +19,11 @@ pages = response['pages']
 
 print(f"\nНайдено вакансий по запросу Python в Москве - {response['found']}\n")
 
-for page in range(1, pages):  # Данные с последней страницы не будут браться
+for page in range(pages):
     params = {'text': 'Python AND Москва',
               'only_with_salary': True,
               'per_page': 100,
-              'page': page}  # Страница будет меняться от 1 до 7 (не включая 7 страницу)
+              'page': page}
 
     response = requests.get(URL, params=params).json()  # На каждую страницу идет запрос
 
