@@ -20,8 +20,8 @@ def result():
     else:
         params = {'text': search, 'only_with_salary': True, 'per_page': 100}
 
-    data = {}
-    data['response'] = fv(params)
+    data = fv(params)
+
     return rt('result.html', **data)
 
 

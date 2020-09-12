@@ -6,28 +6,38 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
           integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
           crossorigin="anonymous">
-</head>
-<body>
-<style>
+
+    <style>
     h1 {
-    color: blue;
+      text-align: center;
+      color: #004156;
+    }
+    div {
+      background-color: #E8D5D5;
     }
 </style>
-<br><br><br><br><br><br><br><br><br><br>
-<h1 align="center"> Найти среднюю зарплату </h1>
-<br><br>
-<div align="center">
+</head>
+<body>
 
+<br><br><br>
+
+<div class="container" >
+    <br><br>
+    <h1> Найти среднюю зарплату </h1>
+    <br><br><br>
     <form action="/result" name="find_vacancies" method="post">
-        <div>
-            <input type="text" name="search" placeholder="Поиск..." required>
-        </div>
-        <div>
-            <input type="text" name="city" placeholder="Город" >
-        </div>
-        <div>
+        <p>
+            <label for="main-field">Ввести запрос</label>
+            <input id="main-field" type="text" name="search" autofocus required>
+        </p>
+        <p>
+            <label for="city-field">Город</label>
+            <input id="city-field" type="text" name="city" placeholder="(не обязательно)" >
+        </p>
+        <p>
             <input type="submit" value="Найти">
-        </div>
+        </p>
+        <br><br><br>
     </form>
 
 </div>

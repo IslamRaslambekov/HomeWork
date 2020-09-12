@@ -15,6 +15,7 @@ def find_vacancies(parameters):
 
     response = requests.get(URL_HH, params=parameters).json()
     pages = response['pages']
+    vacancies_count = response['found']
 
     for page in range(pages + 1):
 
@@ -48,4 +49,9 @@ def find_vacancies(parameters):
                 if salto is not None:
                     max_salary.append(int(salto * euro_rate))
 
-    return f'Средняя з/п разработчиков по запросу {parameters["text"]} от {sum(min_salary) // len(min_salary)} до {sum(max_salary) // len(max_salary)} RUR'
+    data = {
+        'average_salary': f'{sum(min_salary) // len(min_salary)} - {sum(max_salary) // len(max_salary)}',
+        'vacancies_count': vacancies_count
+    }
+
+    return data
