@@ -6,9 +6,9 @@ app = Flask(__name__)
 
 
 @app.route('/')
-@app.route('/vacancies')
+@app.route('/index')
 def get_vacancies():
-    return rt('vacancies.html')
+    return rt('index.html')
 
 
 @app.route('/result', methods=['POST'])
