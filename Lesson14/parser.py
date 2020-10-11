@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import csv
 
-HOST = 'https://www.kant.ru/'
+HOST = 'https://www.kant.ru'
 URL = 'https://www.kant.ru/catalog/bikes/#/filter:page=1&'
 
 html = requests.get(URL).text
@@ -12,7 +12,7 @@ containers = soup.find_all('div', class_='kant__catalog__item__content')
 bikes = list()
 for container in containers:
     link = HOST + container.find('a').get('href')
-    model = container.find('div', {'class': 'kant__catalog__item-title'}).getText()[12:].replace('            ', '')
+    model = container.find('div', {'class': 'kant__catalog__item-title'}).getText()[12:].replace('            ', '').replace(',', '.')
     price = container.find('span', {'class': 'kant__price'}).getText(strip=True)
     if container.find('span', {'class': 'kant__catalog__price--old kant__price'}) is not None:
         old_price = container.find('span', {'class': 'kant__catalog__price--old kant__price'}).getText(strip=True)
@@ -27,7 +27,7 @@ for container in containers:
     })
 
 with open('bikes.csv', 'w', newline='', encoding='UTF-8') as file:
-    writer = csv.writer(file, delimiter=';')
+    writer = csv.writer(file, delimiter=',')
     headers = ['Link', 'Model', 'Price', 'Old price']
     writer.writerow(headers)
 

@@ -17,7 +17,7 @@ bikes = list()
 
 for container in containers:
     link = HOST + container.find('div', class_='card__bottom_price--right global-grid-50 grid-parent').find('a').get('href')
-    model = container.find('div', class_='card--inner').find('a', class_='noborder card__info').getText()[11:]
+    model = container.find('div', class_='card--inner').find('a', class_='noborder card__info').getText()[11:].replace(',', '.')
     price = container.find('div', class_='card__bottom_price').find('span', class_='accent-red').getText().replace('\xa0', ' ')
     old_price = None
 
@@ -29,7 +29,7 @@ for container in containers:
     })
 
 with open('bikes.csv', 'a', newline='', encoding='UTF-8') as file:
-    writer = csv.writer(file, delimiter=';')
+    writer = csv.writer(file, delimiter=',')
 
     for bike in bikes:
         writer.writerow([bike['link'], bike['model'], bike['price'], bike['old_price']])
