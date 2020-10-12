@@ -19,10 +19,25 @@ def show():
         cur = con.cursor()
         cur.execute("SELECT * FROM data")
         data = cur.fetchall()
+        new_data = []
         for dat in data:
-            print(list(dat))
+            new_data.append(list(dat))
+        return new_data
+
+
+def drop():
+    with sq.connect('main.db') as con:
+        cur = con.cursor()
+        cur.execute("DROP TABLE data")
+        cur.execute("""CREATE TABLE IF NOT EXISTS data (
+                    link TEXT,
+                    model TEXT,
+                    price INTEGER,
+                    old_price INTEGER)
+                    """)
 
 
 if __name__ == '__main__':
-    # run_db('a', 'a', 1, 3)
     show()
+    # run_db('a', 'a', 1, 3)
+    # print(show())

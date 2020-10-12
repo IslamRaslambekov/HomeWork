@@ -15,10 +15,23 @@ def get_vacancies():
 
 @app.route('/show-data', methods=['POST'])
 def result():
-    choose = request.form['parse']
+    choose = int(request.form['parse'])
     if choose == 0:
         p.run()
-        return rt(data=db.show())
+        data = db.show()
+        return rt('show-data.html', data=data)
+
+    elif choose == 1:
+        p2.run()
+        data = db.show()
+        return rt('show-data.html', data=data)
+
+    elif choose == 2:
+        db.drop()
+        data = db.show()
+        return rt('show-data.html', data=data)
+
+
 
 
 @app.route('/contacts')
