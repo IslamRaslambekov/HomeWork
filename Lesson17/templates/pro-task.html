@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PRO</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+          crossorigin="anonymous">
+</head>
+<body><br><br><br><br>
+<div class="container">
+    <form action="/show-pro-task" method="post">
+        <p>
+            <label for="surname">Фамилия: </label>
+            <input id="surname" type="text" name="surname" placeholder="Введите фамилию" required>
+        </p>
+        <p>
+            <label for="name">Имя: </label>
+            <input id="name" type="text" name="name" placeholder="Введите имя" required>
+        </p>
+        <p>
+            <label for="middle-name">Отчество: </label>
+            <input id="middle-name" type="text" name="middle-name" placeholder="Введите отчество">
+        </p>
+        <p>
+            <label for="tel">Номер: </label>
+            <input id="tel" type="tel" name="tel" placeholder="Введите номер">
+        </p>
+        <p>
+            <label for="email">Почта: </label>
+            <input id="email" type="email" name="email" placeholder="Введите почту">
+        </p>
+        <p>
+            <label for="password">Пароль: </label>
+            <input id="password" type="password" name="password" placeholder="Введите пароль">
+        </p>
+        <p>
+            <input type="submit" name="submit" value="Сохранить">
+        </p>
+    </form>
+</div>
+<br><br>
+<div class="container">
+    <a href="/index">На главную</a><br>
+    <a href="/contacts">Контакты</a><br>
+</div>
+</body>
+</html>
