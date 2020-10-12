@@ -32,6 +32,24 @@ def result():
         return rt('show-data.html', data=data)
 
 
+@app.route('/pro-task')
+def pro_form():
+    return rt('pro-task.html')
+
+
+@app.route('/show-pro-task', methods=['POST'])
+def show():
+    surname = request.form['surname']
+    name = request.form['name']
+    middle_name = request.form['middle-name']
+    number = request.form['tel']
+    email = request.form['email']
+    password = request.form['password']
+
+    db.pro_task_table(surname, name, middle_name, number, email, password)
+
+    data = db.pro_task_show()
+    return rt('show-pro-task.html', data=data)
 
 
 @app.route('/contacts')
