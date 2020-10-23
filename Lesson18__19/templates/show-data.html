@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Заголовок</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+          crossorigin="anonymous">
+</head>
+<body>
+
+<br><br><br>
+<div class="container">
+    <a href="/index">На главную</a><br><br>
+    {% for dat in data %}
+    {{ dat }}<br>
+    {% endfor %}
+    <br><br>
+    <a href="/index">На главную</a><br>
+    <a href="/contacts">Контакты</a><br>
+    PRO:<a href="/pro-task"> форма </a> позволяющая добавлять данные в бд.
+
+</div><br><br>
+</body>
+</html>
