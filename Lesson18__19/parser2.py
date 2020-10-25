@@ -1,6 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
-from Lesson17.db import run_db
+# from Lesson17.db import run_db
 
 
 def run():
@@ -32,6 +32,6 @@ def run():
             'price': price,
             'old_price': old_price
         })
-
-    for bike in bikes:
-        run_db(str(bike['link']), str(bike['model']), bike['price'], bike['old_price'])
+    return bikes
+    # for bike in bikes:
+    #     run_db(str(bike['link']), str(bike['model']), bike['price'], bike['old_price'])
