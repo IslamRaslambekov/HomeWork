@@ -1,0 +1,10 @@
+{% extends "RSP/base.html" %}
+
+
+{% block content %}
+<ul>
+    {% for title in titles.all %}
+    <li>{{title}}</li>
+    {% endfor %}
+</ul>
+{% endblock %}

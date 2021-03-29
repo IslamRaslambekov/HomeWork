@@ -1,0 +1,10 @@
+{% extends "RSP/base.html" %}
+
+
+{% block content %}
+<ul>
+    {% for item in doctors.all %}
+    <li>{{item}}</li>
+    {% endfor %}
+</ul>
+{% endblock %}
