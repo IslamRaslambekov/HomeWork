@@ -15,10 +15,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from Lesson21 import views
+from django.conf import settings
+from django.conf.urls.static import static
+
+from RSP.views import pageNotFound
 
 urlpatterns = [
-    path('', views.home, name='home'),
     path('admin/', admin.site.urls),
-    path('RSP/', include('RSP.urls'))
+    path('', include('RSP.urls'))
 ]
+
+handler404 = pageNotFound
+
+if settings.DEBUG is True:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -5,7 +5,7 @@ from .models import Doctor, Title
 
 def main_page(request):
     dr_all = Doctor.objects.all()
-    return render(request, 'RSP/get_all_doctors.html', {'doctors': dr_all})
+    return render(request, 'RSP/doctors.html', {'doctors': dr_all})
 
 
 def title_page(request):

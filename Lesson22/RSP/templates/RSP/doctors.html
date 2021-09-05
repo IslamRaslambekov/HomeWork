@@ -1,0 +1,30 @@
+{% extends "RSP/base.html" %}
+
+
+{% block content %}
+
+ <div class="expert_doctors_area doctor_page">
+        <div class="container">
+
+{% for item in doctors %}
+            <div class="row align-items-center">
+                <div class="col-md-6 col-lg-3">
+                    <div class="single_expert mb-40">
+                        <div class="expert_thumb">
+                            <img src="{{ item.image.url }}" alt="Loading...">
+                        </div>
+                        <div class="experts_name text-center">
+                            <h3> {{item.last_name}} {{item.name}} {{item.middle_name}} </h3>
+                            <span>{{item.title}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    some text dddddddddddddddddddddddddddddddddddddddddddddddddddddd
+                </div>
+            </div>
+{% endfor %}
+
+        </div>
+ </div>
+{% endblock %}
