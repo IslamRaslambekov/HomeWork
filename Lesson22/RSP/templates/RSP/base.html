@@ -25,8 +25,6 @@
 <body>
     <header>
         <div class="header-area ">
-            <div class="header-top_area">
-            </div>
             <div id="sticky-header" class="main-header-area">
                 <div class="container">
                     <div class="row align-items-center">
@@ -43,6 +41,7 @@
                                     <ul id="navigation">
                                         <li><a class="active" href="{% url 'home' %}">Главная</a>
                                         <li><a href="{% url 'doctors' %}">Доктора</a></li>
+                                        <li><a href="{% url 'add_doctors' %}">Add doctors</a></li>
                                         <li><a href="/admin">Админ</a></li>
                                     </ul>
                                 </nav>
@@ -60,9 +59,9 @@
             </div>
         </div>
     </header>
-
+    <section>
 {% block content %} {% endblock %}
-
+    </section>
     <footer class="footer">
         <div class="footer_top">
             <div class="container">
