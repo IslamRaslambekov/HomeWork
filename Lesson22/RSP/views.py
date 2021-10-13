@@ -26,10 +26,10 @@ class Doctors(ListView):   # ClassBasedView
 #             return redirect('doctors')
 #     else:
 #         form = AddDoctorsForm()
-#     return render(request, 'RSP/doctors_create.html', {'form': form})
+#     return render(request, 'RSP/add_doctors.html', {'form': form})
 class AddDoctors(CreateView):   # ClassBasedView
     form_class = AddDoctorsForm
-    template_name = 'RSP/doctors_create.html'
+    template_name = 'RSP/add_doctors.html'
     success_url = reverse_lazy('doctors')
 
 

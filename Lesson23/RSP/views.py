@@ -18,7 +18,7 @@ class Doctors(ListView):  # ClassBasedView
 
 class AddDoctors(LoginRequiredMixin, CreateView):  # ClassBasedView
     form_class = AddDoctorsForm
-    template_name = 'RSP/doctors_create.html'
+    template_name = 'RSP/add_doctors.html'
     success_url = reverse_lazy('doctors')
 
 
