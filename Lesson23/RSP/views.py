@@ -1,5 +1,8 @@
+from django.contrib.auth import logout
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render, get_object_or_404
+from django.contrib.auth.views import LoginView
+from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView
 from .models import *
@@ -24,3 +27,22 @@ class AddDoctors(LoginRequiredMixin, CreateView):  # ClassBasedView
 
 def pageNotFound(request, exception):
     return render(request, 'RSP/error404.html')
+
+
+class RegisterUser(CreateView):
+    form_class = UserCreationForm
+    template_name = 'RSP/register.html'
+    success_url = reverse_lazy('login')
+
+
+class LoginUser(LoginView):
+    form_class = AuthenticationForm
+    template_name = 'RSP/login.html'
+
+    def get_success_url(self):
+        return reverse_lazy('home')
+
+
+def logout_user(request):
+    logout(request)
+    return redirect('home')

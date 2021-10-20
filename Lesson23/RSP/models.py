@@ -32,11 +32,3 @@ class Doctor(Common):
         verbose_name = 'Доктора'
         verbose_name_plural = 'Доктора'
 
-
-class Client(Common):
-    number = models.CharField(max_length=25, verbose_name='Телефон')
-    # email = models.EmailField(max_length=100, verbose_name='Почта')
-
-    class Meta:
-        verbose_name = 'Пациенты'
-        verbose_name_plural = 'Пациенты'

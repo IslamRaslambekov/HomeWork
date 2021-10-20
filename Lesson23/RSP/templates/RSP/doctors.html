@@ -5,6 +5,11 @@
 
 
 <div class="container">
+{% if request.user.is_authenticated %}
+<a href="{% url 'add_doctors' %}"> Добавить доктора </a>
+{% else %}
+    <h3> Войдите в аккаунт, чтобы иметь возможность добавлять докторов. </h3>
+{% endif %}
 
 {% for item in doctors %}
             <div class="card mb-4" style="max-width: 800px;">

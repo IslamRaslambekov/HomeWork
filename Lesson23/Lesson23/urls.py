@@ -23,7 +23,6 @@ from RSP.views import pageNotFound
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('RSP.urls')),
-    path('', include('Users.urls'))
 ]
 
 handler404 = pageNotFound
