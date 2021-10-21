@@ -42,7 +42,7 @@
                                         <li><a class="active" href="{% url 'home' %}">Главная</a></li>
                                         <li><a href="{% url 'doctors' %}">Доктора</a></li>
                                         {% if request.user.is_authenticated %}
-                                        <li>{{user.username}} | <a href="{% url 'logout' %}"> Выйти </a> </li>
+                                        <li>{{user.username}} | <a href="{% url 'logout' %}" style="color:red"> Выйти </a> </li>
                                         {% else %}
                                         <li><a href="{% url 'register' %}">Регистрация</a></li>
                                         <li><a href="{% url 'login' %}">Войти</a></li>
