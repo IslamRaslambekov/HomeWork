@@ -14,6 +14,7 @@ def main_page(request):
 
 
 class Doctors(ListView):  # ClassBasedView
+    paginate_by = 2
     model = Doctor
     template_name = 'RSP/doctors.html'
     context_object_name = 'doctors'
