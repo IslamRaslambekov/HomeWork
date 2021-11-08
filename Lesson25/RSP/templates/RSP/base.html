@@ -39,21 +39,26 @@
                             <div class="main-menu  d-none d-lg-block">
                                 <nav>
                                     <ul id="navigation">
-                                        <li><a class="active" href="{% url 'home' %}">Главная</a>
+                                        <li><a class="active" href="{% url 'home' %}">Главная</a></li>
                                         <li><a href="{% url 'doctors' %}">Доктора</a></li>
+                                        {% if request.user.is_authenticated %}
+                                        <li>{{user.username}} | <a href="{% url 'logout' %}" style="color:red"> Выйти </a> </li>
+                                        {% else %}
+                                        <li><a href="{% url 'register' %}">Регистрация</a></li>
+                                        <li><a href="{% url 'login' %}">Войти</a></li>
+                                        {% endif %}
                                         <li><a href="/admin">Админ</a></li>
-                                        <li><a href="{% url 'users:login' %}">Логин</a></li>
                                     </ul>
                                 </nav>
                             </div>
                         </div>
-                        <div class="col-xl-3 col-lg-3 d-none d-lg-block">
-                            <div class="Appointment">
-                                <div class="book_btn d-none d-lg-block">
-                                    <a class="popup-with-form" href="#">Записаться на прием</a>
-                                </div>
-                            </div>
-                        </div>
+<!--                        <div class="col-xl-3 col-lg-3 d-none d-lg-block">-->
+<!--                            <div class="Appointment">-->
+<!--                                <div class="book_btn d-none d-lg-block">-->
+<!--                                    <a class="popup-with-form" href="#test-form">Записаться на прием</a>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
                     </div>
                 </div>
             </div>
@@ -98,9 +103,5 @@
             </div>
         </div>
     </footer>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
-        integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous">
-
-</script>
 </body>
 </html>

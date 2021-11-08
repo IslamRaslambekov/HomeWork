@@ -1,4 +1,4 @@
-"""Lesson24 URL Configuration
+"""Lesson25 URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.1/topics/http/urls/
@@ -23,7 +23,6 @@ from RSP.views import pageNotFound
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('RSP.urls')),
-    path('', include('Users.urls'))
 ]
 
 handler404 = pageNotFound
