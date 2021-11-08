@@ -17,12 +17,19 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from rest_framework import routers
 
 from RSP.views import pageNotFound
+from RSP.api_views import TitleViewSet
+
+
+router = routers.DefaultRouter()
+router.register('title', TitleViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('RSP.urls')),
+    path('api-title/', include(router.urls)),
 ]
 
 handler404 = pageNotFound
