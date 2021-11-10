@@ -11,6 +11,8 @@ class TitleSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class DoctorSerializer(serializers.HyperlinkedModelSerializer):
+    title = serializers.StringRelatedField(many=True)
+
     class Meta:
         model = Doctor
-        exclude = ['title', 'image']
+        exclude = ['image']
