@@ -42,7 +42,7 @@ class Migration(migrations.Migration):
                 ('reception', models.DateTimeField()),
                 ('created_in', models.DateTimeField(auto_now_add=True)),
                 ('updated_in', models.DateTimeField(auto_now=True)),
-                ('doctor', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='dentist.doctor')),
+                ('doctor', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='dentistry.doctor')),
             ],
         ),
         migrations.CreateModel(
@@ -55,12 +55,12 @@ class Migration(migrations.Migration):
                 ('number', models.IntegerField(blank=True, max_length=15, null=True)),
                 ('email', models.EmailField(max_length=254)),
                 ('created_in', models.DateTimeField(auto_now_add=True)),
-                ('reception_time', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to='dentist.schedule')),
+                ('reception_time', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to='dentistry.schedule')),
             ],
         ),
         migrations.AddField(
             model_name='doctor',
             name='title',
-            field=models.ManyToManyField(to='dentist.Title'),
+            field=models.ManyToManyField(to='dentistry.Title'),
         ),
     ]
