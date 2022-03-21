@@ -23,7 +23,7 @@ class Title(models.Model):
 
 class Doctor(Common):
     title = models.ManyToManyField(Title)
-    image = models.ImageField(upload_to='RSP', null=True, blank=True, verbose_name='Фото',
+    image = models.ImageField(upload_to='RSP', verbose_name='Фото',
                               default='/static/RSP/img/user.png')
 
     def __str__(self):
