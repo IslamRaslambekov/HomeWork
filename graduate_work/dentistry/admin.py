@@ -7,6 +7,7 @@ from .models import Schedule, Patient, Doctor, Title
 class DoctorAdmin(admin.ModelAdmin):
     list_display = ('last_name', 'first_name', 'middle_name', 'image')
     exclude = ['created_in', 'updated_in']
+    empty_value_display = 'none'
 
 
 admin.site.register(Schedule)
