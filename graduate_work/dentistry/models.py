@@ -25,7 +25,6 @@ class Patient(models.Model):
     middle_name = models.CharField(max_length=50, blank=True)
     last_name = models.CharField(max_length=50)
     number = models.IntegerField(max_length=25)
-    email = models.EmailField(blank=True, null=True)
     reception_time = models.OneToOneField('Schedule', unique=True, on_delete=models.CASCADE)
     created_in = models.DateTimeField(auto_now_add=True)
 
